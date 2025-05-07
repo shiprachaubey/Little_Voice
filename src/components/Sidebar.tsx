@@ -3,6 +3,8 @@ import Profile from '../assets/images/profile.png'
 import HomeIcon from '../assets/svg/Home';
 import  Newcase  from '../assets/svg/Newcase';
 import  Support  from '../assets/svg/Support';
+import { NavLink } from 'react-router-dom';
+
 
 
 const Sidebar = () => {
@@ -13,7 +15,15 @@ const Sidebar = () => {
         LV
       </div>
       <div className="flex flex-col gap-6 items-center">
-        <HomeIcon className="w-18 h-18 text-white" />
+      <NavLink to="/home">
+  {({ isActive }) => (
+    <HomeIcon
+      className="w-18 h-18 cursor-pointer"
+      fill={isActive ? '#9CA3AF' : '#FFFFFF'} // Tailwind: gray-400 and white
+    />
+  )}
+</NavLink>
+
         <Newcase className="w-18 h-18 text-white" />
         <Support className="w-18 h-18 text-white" />
       </div>
