@@ -118,6 +118,7 @@ const handleSendViaLittleVoices = () => {
 >
   Approve →
 </button>
+
 {showResponseOverlay && (
   <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-4">
   <div className="bg-[#2C3A5F] text-white rounded-2xl max-w-2xl w-full shadow-lg relative flex flex-col max-h-[90vh]">
@@ -176,7 +177,6 @@ const handleSendViaLittleVoices = () => {
     </div>
   </div>
 )}
-
 
 
         {/* Logo at the bottom */}
