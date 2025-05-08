@@ -24,7 +24,14 @@ const Sidebar = () => {
   )}
 </NavLink>
 
-        <Newcase className="w-18 h-18 text-white" />
+<NavLink to="/newcase">
+  {({ isActive }) => (
+    <Newcase
+      className="w-18 h-18 cursor-pointer"
+      fill={isActive ? '#9CA3AF' : '#FFFFFF'} // Tailwind: gray-400 and white
+    />
+  )}
+</NavLink>
         <Support className="w-18 h-18 text-white" />
       </div>
     </div>
