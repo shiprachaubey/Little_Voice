@@ -10,7 +10,7 @@ module.exports = {
         "app-secondary": "var(--app-secondary)",
         error: "var(--error)",
         ffffff: "var(--ffffff)",
-        "little-voices-navy": "var(--little-voices-navy)",
+        "little-voices-navy": "var(--little-voices-navy)", 
         successful: "var(--successful)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

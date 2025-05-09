@@ -20,10 +20,10 @@ const openCases = [
 
 const Home = () => {
   return (
-    <div className="flex min-h-screen text-white overflow-x-hidden">
+    <div className="flex  bg-little-voices-navy min-h-screen text-white overflow-x-hidden">
       <Sidebar />
 
-      <div className="ml-[110px] p-6 md:p-10 w-full">
+      <div className="ml-[110px] p-6 md:p-10 w-full ">
         {/* Dashboard Title */}
         <div className="flex items-center gap-2 text-sm text-blue-300 cursor-pointer hover:underline mb-4">
           <FaArrowLeft size={14} />
@@ -45,11 +45,11 @@ const Home = () => {
     {openCases.map((caseItem, idx) => (
       <div
         key={idx}
-        className="w-[70%] ml-0 flex flex-col md:flex-row justify-between items-center gap-2 px-6 py-3 rounded-lg "
+        className="w-[70%] ml-0 flex flex-col md:flex-row justify-between items-center gap-2 px-4 py-2 rounded-lg "
       >
         {/* Business Name */}
         <div className="w-full md:w-[50%]">
-          <div className="bg-white text-black px-12 py-5 rounded-full font-semibold text-center md:text-left w-full">
+          <div className="bg-white text-black px-6 py-3 rounded-full font-semibold text-center md:text-left w-full">
             {caseItem.name}
           </div>
         </div>
@@ -112,11 +112,11 @@ const Home = () => {
     return (
       <div
         key={idx}
-        className="w-[70%] ml-0 flex flex-col md:flex-row justify-between items-center gap-2 px-6 py-3 rounded-lg"
+        className="w-[70%] ml-0 flex flex-col md:flex-row justify-between items-center gap-2 px-4 py-2 rounded-lg"
       >
         {/* Business Name */}
         <div className="w-full md:w-[50%]">
-          <div className={`px-12 py-5 rounded-full font-semibold text-black text-center md:text-left
+          <div className={` px-6 py-3 rounded-full font-semibold text-black text-center md:text-left
             ${isSuccess ? 'bg-green-400' : 'bg-red-400'}`}>
             {caseItem.name}
           </div>

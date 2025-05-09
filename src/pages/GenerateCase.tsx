@@ -9,7 +9,7 @@ const GenerateCase: React.FC = () => {
     const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen text-white flex">
+    <div className="min-h-screen bg-little-voices-navy text-white flex">
           <Sidebar />
   
           <div className="w-[70%] px-10 py-8 flex flex-col ml-[120px]">

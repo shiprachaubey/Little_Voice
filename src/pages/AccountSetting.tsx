@@ -1,7 +1,7 @@
 import React  from 'react';
 import Sidebar from '../components/Sidebar';
 import Logo from '../assets/images/VoiceLogo.png';
-import ProfileImg from '../assets/images/profile.png'; // use your profile image
+import ProfileImg from '../assets/images/profile.jpeg'; // use your profile image
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ const AccountSettings: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen text-white flex">
+    <div className="min-h-screen bg-little-voices-navy text-white flex">
       <Sidebar />
 
       <div className="w-[55%] px-10 py-8 flex flex-col ml-[120px]">

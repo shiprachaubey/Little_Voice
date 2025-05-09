@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import Logo from '../assets/images/logo.png';
 const SignUp = () => {
     const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -28,10 +28,12 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen bg-little-voices-navy flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl p-12 w-full max-w-md">
         
-        <h2 className="text-2xl font-bold text-center mb-12">Sign Up</h2>
+      <div className="flex justify-center mb-8">
+          <img src={Logo} alt="Logo" className="h-30 w-100" />
+        </div>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -42,7 +44,7 @@ const SignUp = () => {
               value={formData.company}
               onChange={handleChange}
               placeholder="Company"
-              className="w-full px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
             />
           </div>
           
@@ -54,7 +56,7 @@ const SignUp = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email Address"
-              className="w-full px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
+              className="w-full  text-black px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
             />
           </div>
           
@@ -66,7 +68,7 @@ const SignUp = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Phone Number"
-              className="w-full px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
+              className="w-full  text-black px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
             />
           </div>
           
@@ -78,7 +80,7 @@ const SignUp = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              className="w-full px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
             />
           </div>
           
@@ -90,7 +92,7 @@ const SignUp = () => {
               value={formData.confirmPassword}
               onChange={handleChange}
               placeholder="Confirm Password"
-              className="w-full px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-4 py-3 mt-2 rounded-lg bg-gray-100 border border-gray-200 focus:outline-none focus:border-blue-500"
             />
           </div>
           

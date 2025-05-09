@@ -7,7 +7,7 @@ import Logo from '../assets/images/VoiceLogo.png';
 const Support: FC = () => {
 
   return (
-    <div className="min-h-screen text-white flex">
+    <div className="min-h-screen bg-little-voices-navy text-white flex">
       <Sidebar />
       <div className="flex-1 ml-[120px] px-10 py-8">
         {/* Back Button */}
