@@ -7,11 +7,48 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Login:', { username, password });
-    navigate('/home');
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!username || !password) {
+    alert("All fields are required.");
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: username,
+        password: password
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // ✅ Save token and user info
+      localStorage.setItem('token', data.token); // 🔐 Store the JWT for future API calls
+      localStorage.setItem('user', JSON.stringify(data.user));
+      navigate('/account-setting');
+    } else {
+      if (data.msg?.toLowerCase().includes("user not found")) {
+        const goToSignup = confirm("User not found. Would you like to sign up?");
+        if (goToSignup) navigate('/signup');
+      } else {
+        alert(data.msg || "Invalid credentials. Please try again.");
+      }
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+    alert("Something went wrong. Please try again.");
+  }
+};
+
+
 
   return (
     <div className="min-h-screen bg-little-voices-navy flex items-center justify-center p-4">

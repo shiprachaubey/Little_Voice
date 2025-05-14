@@ -1,257 +1,330 @@
-// import React, { useState } from 'react';
+
+// // import React, { useState } from 'react';
+// // import Sidebar from '../components/Sidebar';
+// // import { useNavigate } from 'react-router-dom';
+// // import Logo from '../assets/images/VoiceLogo.png';
+
+// // const ChatHistory2: React.FC = () => {
+// //   const [detailsVisible, setDetailsVisible] = useState(true);
+// //   const [showResponseOverlay, setShowResponseOverlay] = useState(false);
+// //   const navigate = useNavigate();
+
+// //   const responseHistory = [
+// //     {
+// //       type: 'first',
+// //       content: `Dear [Energy Company Name or Customer Service Team],
+
+// // I am writing to express my extreme dissatisfaction with my recent electricity bill dated [Bill Date] for account number [Your Account Number]...
+
+// // For context:
+// // • My average bill over the past [X months/years] has been approximately [Typical Amount].
+// // • This bill is [Amount], reflecting an unjustified increase of [Percentage].
+// // • I have made no significant changes...`,
+// //     },
+// //   ];
+
+// //   const toggleDetails = () => setDetailsVisible(!detailsVisible);
+
+// //   const handleAddToDraft = () => {
+// //     const subject = encodeURIComponent('New Complaint Draft');
+// //     const body = encodeURIComponent(`Dear [Energy Company Representative],\n\nThank you for your prompt response...`);
+// //     const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?subject=${subject}&body=${body}`;
+// //     window.open(outlookUrl, '_blank');
+// //   };
+
+// //   const handleSendViaLittleVoices = () => {
+// //     navigate('/chat');
+// //   };
+
+// //   return (
+// //     <div className="min-h-screen bg-little-voices-navy text-white flex flex-col md:flex-row">
+// //       <Sidebar />
+
+// //       <div className="flex-1 px-4 md:px-10 py-8 md:ml-[120px] w-full max-w-[900px]">
+// //         {/* Back Button */}
+// //         <div className="flex items-center text-blue-200 cursor-pointer mb-6">
+// //           <span className="mr-2">←</span>
+// //           <span>Previous</span>
+// //         </div>
+
+// //         {/* Header */}
+// //         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-6">
+// //           <h1 className="text-2xl md:text-3xl font-bold">AGL</h1>
+// //           <span className="bg-[#2A2F3A] px-4 py-1 rounded-full text-sm font-medium w-fit">
+// //             15 / 11 / 2024
+// //           </span>
+// //         </div>
+
+// //         {/* Case Details Section */}
+// //         <div className="mb-10 border-b border-[#475371] pb-6">
+// //           <div className="text-lg font-semibold mb-4 flex items-center cursor-pointer" onClick={toggleDetails}>
+// //             <span>Case Details</span>
+// //             <span className="text-sm ml-2">{detailsVisible ? '▾' : '▸'}</span>
+// //           </div>
+
+// //           {detailsVisible && (
+// //             <>
+// //               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+// //                 {[
+// //                   ['Company Name', 'AGL'],
+// //                   ['Company Website', 'AGL.com.au'],
+// //                   ['Contact Name', 'James Andrew'],
+// //                   ['Email', 'support@agl.com.au'],
+// //                 ].map(([label, value], i) => (
+// //                   <div key={i}>
+// //                     <p className="text-sm text-gray-400 mb-1">{label}</p>
+// //                     <p className="font-medium">{value}</p>
+// //                   </div>
+// //                 ))}
+// //               </div>
+// //               <div>
+// //                 <p className="text-sm text-gray-400 mb-1">Issue Details / History</p>
+// //                 <p className="text-sm">
+// //                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat felis dui...
+// //                 </p>
+// //               </div>
+// //             </>
+// //           )}
+// //         </div>
+
+// //         {/* Response History */}
+// //         <div className="mb-10">
+// //           <h2 className="text-lg font-semibold mb-4">Response History</h2>
+
+// //           {responseHistory.map((response, index) => (
+// //             <div className="mb-6" key={index}>
+// //               <p className="font-semibold text-blue-200 mb-2">▾ First Response:</p>
+// //               <p className="text-sm leading-relaxed text-white whitespace-pre-line">
+// //                 {response.content}
+// //               </p>
+// //             </div>
+// //           ))}
+// //         </div>
+
+// //         {/* Chat History Section */}
+// //         <div className="mb-6">
+// //           <label className="block mb-2">Chat History</label>
+// //           <div className="bg-white text-[#2C3A5F] p-6 rounded-[10px] h-[400px] overflow-y-auto space-y-6 text-sm">
+// //             <div>
+// //               <p className="font-semibold mb-1">Desired Outcome:</p>
+// //               <p className="font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+// //             </div>
+// //             <div>
+// //               <p className="text-blue-600 font-semibold mb-1">AI Response:</p>
+// //               <p className="font-medium">Vivamus feugiat felis dui, id luctus quam tristique vel...</p>
+// //             </div>
+// //             <div>
+// //               <p className="font-semibold mb-1">Your Reply:</p>
+// //               <p className="font-medium">Proin feugiat lectus eu odio lacinia gravida...</p>
+// //             </div>
+// //             <div>
+// //               <p className="text-blue-600 font-semibold mb-1">AI Response:</p>
+// //               <p className="font-medium whitespace-pre-line">
+// //                 Dear [Energy Company Name or Customer Service Team],{'\n\n'}I am writing to express...
+// //               </p>
+// //             </div>
+// //           </div>
+
+// //           {/* Approve Button */}
+// //           <button
+// //             onClick={() => setShowResponseOverlay(true)}
+// //             className="bg-blue-500 hover:bg-blue-600 text-white mt-4 px-4 py-2 text-sm rounded-full w-fit"
+// //           >
+// //             Approve →
+// //           </button>
+// //         </div>
+
+// //         {/* Fixed Logo (Responsive) */}
+// //         <div className="mt-12 flex justify-end">
+// //           <img src={Logo} alt="Little Voices" className="w-[80px] md:w-[120px] fixed bottom-4 right-4 z-40" />
+// //         </div>
+// //       </div>
+
+// //       {/* Overlay */}
+// //       {showResponseOverlay && (
+// //         <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-4">
+// //           <div className="bg-[#2C3A5F] text-white rounded-xl w-full max-w-2xl shadow-lg max-h-[90vh] flex flex-col p-6 md:p-10 overflow-hidden">
+// //             {/* Back Button */}
+// //             <div className="mb-4">
+// //               <button
+// //                 onClick={() => setShowResponseOverlay(false)}
+// //                 className="flex items-center text-white hover:text-gray-300"
+// //               >
+// //                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+// //                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+// //                 </svg>
+// //                 Back
+// //               </button>
+// //             </div>
+
+// //             <h2 className="text-2xl md:text-4xl font-bold mb-6">Final Response</h2>
+
+// //             {/* Scrollable Letter */}
+// //             <div className="overflow-y-auto pr-2 space-y-4 text-sm flex-grow">
+// //               <p>Dear [Energy Company Name or Customer Service Team],</p>
+// //               <p>I am writing to express my extreme dissatisfaction with my recent electricity bill...</p>
+// //               <p>For context:</p>
+// //               <ul className="list-disc pl-5 space-y-1">
+// //                 <li>My average bill over the past [X months/years]...</li>
+// //                 <li>This bill is [Amount]...</li>
+// //                 <li>No significant changes in usage...</li>
+// //               </ul>
+// //               <p>I request:</p>
+// //               <ul className="list-disc pl-5 space-y-1">
+// //                 <li>A thorough investigation</li>
+// //                 <li>A detailed breakdown</li>
+// //                 <li>Adjustment of my bill</li>
+// //                 <li>Confirmation this won’t recur</li>
+// //               </ul>
+// //               <p>Sincerely,<br />[Your Name]<br />[Your Contact Info]</p>
+// //             </div>
+
+// //             {/* Footer Buttons */}
+// //             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6 pt-4 border-t border-gray-700">
+// //               <button
+// //                 onClick={handleAddToDraft}
+// //                 className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm flex items-center gap-2"
+// //               >
+// //                 Add to My Drafts
+// //               </button>
+// //               <button
+// //                 onClick={handleSendViaLittleVoices}
+// //                 className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm flex items-center gap-2"
+// //               >
+// //                 Send via Little Voices
+// //               </button>
+// //             </div>
+// //           </div>
+// //         </div>
+// //       )}
+// //     </div>
+// //   );
+// // };
+
+// // export default ChatHistory2;
+
+// import React, { useEffect, useState } from 'react';
 // import Sidebar from '../components/Sidebar';
-// import { useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 // import Logo from '../assets/images/VoiceLogo.png';
 
 // const ChatHistory2: React.FC = () => {
-//   const [detailsVisible, setDetailsVisible] = useState(true);
-//     const [showResponseOverlay, setShowResponseOverlay] = useState(false);
+//   const navigate = useNavigate();
+//   const location = useLocation();
+//   const aiResponse = location.state?.aiResponse;
+//   const caseMeta = location.state?.caseMeta;
 
-//   const responseHistory = [
-//     {
-//       type: 'first',
-//       content: `Dear [Energy Company Name or Customer Service Team],
+//   const [showResponseOverlay, setShowResponseOverlay] = useState(false);
+//   const [approvedMessageId, setApprovedMessageId] = useState<string | null>(null);
 
-// I am writing to express my extreme dissatisfaction with my recent electricity bill dated [Bill Date] for account number [Your Account Number]. The charges are outrageously high, far exceeding my usual bills without any reasonable explanation.
+//   const handleApprove = async () => {
+//     const token = localStorage.getItem('token');
+//     if (!token || !aiResponse || !caseMeta) return;
 
-// For context:
-// • My average bill over the past [X months/years] has been approximately [Typical Amount].
-// • This bill is [Amount], reflecting an unjustified increase of [Percentage].
-// • I have made no significant changes to my energy usage, appliance usage, or household routines to warrant such a spike.`
-//     },
+//     try {
+//       // 1. Create case
+//       const caseRes = await fetch('/api/cases', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//           Authorization: `Bearer ${token}`,
+//         },
+//         body: JSON.stringify(caseMeta),
+//       });
 
-   
-//   ];
+//       const caseData = await caseRes.json();
 
-//   const toggleDetails = () => {
-//     setDetailsVisible(!detailsVisible);
+//       // 2. Save AI response as approved message
+//       const messageRes = await fetch('/api/messages', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//           Authorization: `Bearer ${token}`,
+//         },
+//         body: JSON.stringify({
+//           caseId: caseData._id,
+//           sender: 'claude',
+//           content: aiResponse,
+//           type: 'ai',
+//           approved: true,
+//         }),
+//       });
+
+//       const messageData = await messageRes.json();
+//       setApprovedMessageId(messageData._id || messageData.aiMessage?._id || null);
+//       setShowResponseOverlay(true);
+//     } catch (err) {
+//       console.error('Approval failed:', err);
+//     }
 //   };
 
-//  const handleAddToDraft = () => {
-//       const subject = encodeURIComponent('New Complaint Draft');
-//       const body = encodeURIComponent(
-//         `Dear [Energy Company Representative],\n\nThank you for your prompt response...`
-//       );
-    
-//       const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?subject=${subject}&body=${body}`;
-//       window.open(outlookUrl, '_blank');
-//     };
-    
-      
-// const navigate = useNavigate();
-
-// const handleSendViaLittleVoices = () => {
-//   navigate('/chat'); // change this to your route
-// };
+//   const handleSendViaLittleVoices = () => {
+//     navigate('/chat');
+//   };
 
 //   return (
-//     <div className="min-h-screen text-white flex bg-little-voices-navy ">
+//     <div className="min-h-screen bg-little-voices-navy text-white flex flex-col md:flex-row">
 //       <Sidebar />
-
-//       <div className="w-[70%] px-10 py-8 flex flex-col ml-[120px]">
-//         {/* Back Button */}
+//       <div className="flex-1 px-4 md:px-10 py-8 md:ml-[120px] w-full max-w-[900px]">
 //         <div className="flex items-center text-blue-200 cursor-pointer mb-6">
 //           <span className="mr-2">←</span>
 //           <span>Previous</span>
 //         </div>
 
-//         {/* Header */}
-//         <div className="flex items-center gap-4 mb-6">
-//           <h1 className="text-3xl font-bold">AGL</h1>
-//           <span className="bg-[#2A2F3A] px-4 py-1 rounded-full text-sm font-medium">
-//             15 / 11 / 2024
-//           </span>
+//         <div className="text-2xl md:text-3xl font-bold mb-6">Review & Approve Response</div>
+
+//         <div className="bg-white text-[#2C3A5F] p-6 rounded-[10px] h-[400px] overflow-y-auto space-y-6 text-sm whitespace-pre-line">
+//           {aiResponse}
 //         </div>
 
-//         {/* Case Details Section */}
-//         <div className="mb-10 border-b border-[#475371] pb-6">
-//           <div 
-//             className="text-lg font-semibold mb-4 flex items-center cursor-pointer" 
-//             onClick={toggleDetails}
-//           >
-//             <span>Case Details</span>
-//             <span className="text-sm ml-2">{detailsVisible ? '▾' : '▸'}</span>
+//         <button
+//           onClick={handleApprove}
+//           className="bg-blue-500 hover:bg-blue-600 text-white mt-4 px-4 py-2 text-sm rounded-full w-fit"
+//         >
+//           Approve →
+//         </button>
+
+//         <div className="mt-12 flex justify-end">
+//           <img src={Logo} alt="Little Voices" className="w-[80px] md:w-[120px] fixed bottom-4 right-4 z-40" />
+//         </div>
+//       </div>
+
+//       {/* Final Response Overlay */}
+//       {showResponseOverlay && (
+//         <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-4">
+//           <div className="bg-[#2C3A5F] text-white rounded-xl w-full max-w-2xl shadow-lg max-h-[90vh] flex flex-col p-6 md:p-10 overflow-hidden">
+//             <div className="mb-4">
+//               <button onClick={() => setShowResponseOverlay(false)} className="flex items-center text-white hover:text-gray-300">
+//                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+//                 </svg>
+//                 Back
+//               </button>
+//             </div>
+
+//             <h2 className="text-2xl md:text-4xl font-bold mb-6">Final Response</h2>
+
+//             <div className="overflow-y-auto pr-2 space-y-4 text-sm flex-grow">
+//               <p className="whitespace-pre-line">{aiResponse}</p>
+//             </div>
+
+//             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6 pt-4 border-t border-gray-700">
+//               <button
+//                 onClick={() => window.open(`https://outlook.live.com/mail/0/deeplink/compose?subject=Complaint Draft&body=${encodeURIComponent(aiResponse)}`, '_blank')}
+//                 className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm"
+//               >
+//                 Add to My Drafts
+//               </button>
+//               <button
+//                 onClick={handleSendViaLittleVoices}
+//                 className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm"
+//               >
+//                 Send via Little Voices
+//               </button>
+//             </div>
 //           </div>
-          
-//           {detailsVisible && (
-//             <>
-//               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-//                 <div>
-//                   <p className="text-sm text-gray-400 mb-1">Company Name</p>
-//                   <p className="font-medium">AGL</p>
-//                 </div>
-//                 <div>
-//                   <p className="text-sm text-gray-400 mb-1">Company Website</p>
-//                   <p className="font-medium">AGL.com.au</p>
-//                 </div>
-//                 <div>
-//                   <p className="text-sm text-gray-400 mb-1">Contact Name</p>
-//                   <p className="font-medium">James Andrew</p>
-//                 </div>
-//                 <div>
-//                   <p className="text-sm text-gray-400 mb-1">Email</p>
-//                   <p className="font-medium">support@agl.com.au</p>
-//                 </div>
-//               </div>
-//               <div className="col-span-2">
-//                 <p className="text-sm text-gray-400 mb-1">Issue Details / History</p>
-//                 <p className="text-sm">
-//                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat felis dui, id luctus quam tristique vel. In luctus et turpis pharetra aliquet...
-//                 </p>
-//               </div>
-//             </>
-//           )}
 //         </div>
-
-//         {/* Response History */}
-//         <div className="mb-10">
-//           <h2 className="text-lg font-semibold mb-4">Response History</h2>
-
-//           {responseHistory.map((response, index) => (
-//             <div className="mb-6" key={index}>
-//               <p className="font-semibold text-blue-200 mb-2">▾ First Response:</p>
-//               <p className="text-sm leading-relaxed text-white whitespace-pre-line">
-//                 {response.content}
-//               </p>
-//             </div>
-//           ))}
-//             {responseHistory.map((response, index) => (
-//             <div className="mb-6" key={index}>
-//               <p className="font-semibold text-blue-200 mb-2">▾ Second Response:</p>
-//               <p className="text-sm leading-relaxed text-white whitespace-pre-line">
-//                 {response.content}
-//               </p>
-//             </div>
-//           ))}
-//         </div>
-
-
-//         <div className="mb-6">
-//           <label className="block mb-2">Chat History</label>
-//           <div className="bg-white text-[#2C3A5F] p-6 rounded-[10px] h-[400px] overflow-y-auto space-y-6 text-sm">
-//   {/* Desired Outcome */}
-//   <div>
-//     <p className="font-semibold mb-1">Desired Outcome:</p>
-//     <p className="font-medium">
-//       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat felis dui, id luctus quam tristique vel. In luctus et turpis pharetra aliquet. Nunc eget metus nec odio ullamcorper imperdiet. Proin feugiat lectus eu odio lacinia gravida. Pellentesque fringilla eget leo tincidunt pretium.
-//     </p>
-//   </div>
-
-//   {/* AI Response */}
-//   <div>
-//     <p className="text-blue-600 font-semibold mb-1">AI Response:</p>
-//     <p className="font-medium">
-//       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat felis dui, id luctus quam tristique vel...
-//     </p>
-//   </div>
-
-//   {/* Your Reply */}
-//   <div>
-//     <p className="font-semibold mb-1">Your Reply:</p>
-//     <p className="font-medium">
-//       Proin feugiat lectus eu odio lacinia gravida. Pellentesque fringilla eget leo tincidunt pretium.
-//     </p>
-//   </div>
-
-//   {/* Second AI Response */}
-//   <div>
-//     <p className="text-blue-600 font-semibold mb-1">AI Response:</p>
-//     <p className="font-medium whitespace-pre-line">
-//       Dear [Energy Company Name or Customer Service Team],{'\n\n'}
-//       I am writing to express my extreme dissatisfaction with my recent electricity bill dated [Bill Date] for account number [Your Account Number]. The charges are outrageously high, far exceeding my usual bills without any reasonable explanation.{'\n\n'}
-//       For context:{'\n'}
-//       • My average bill over the past [X months/years] has been approximately [Typical Amount].
-//     </p>
-//   </div>
-// </div>
-// <button
-//    onClick={() => setShowResponseOverlay(true)}
-//   className="bg-blue-500 hover:bg-blue-600 text-white mt-4 px-4 py-1.5 text-sm rounded-full w-fit"
-// >
-//   Approve →
-// </button>
-//    {/* Response Overlay */}
-// {showResponseOverlay && (
-//   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-//     <div className="bg-little-voices-navy text-white rounded-xl shadow-lg w-[720px] max-h-[60vh] flex flex-col p-10 relative overflow-hidden">
-      
-//       {/* Back Button */}
-//       <div className="flex items-center mb-4">
-//         <button
-//           onClick={() => setShowResponseOverlay(false)}
-//           className="flex items-center text-white hover:text-gray-300"
-//         >
-//           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-//           </svg>
-//           Back
-//         </button>
-//       </div>
-
-//       {/* Title */}
-//       <h2 className="text-4xl font-bold mb-6">Final Response</h2>
-
-//       {/* Scrollable Content */}
-//       <div className="overflow-y-auto flex-grow pr-4 space-y-6">
-//         <p>Dear [Energy Company Name or Customer Service Team],</p>
-//         <p>
-//           I am writing to express my extreme dissatisfaction with my recent electricity bill...
-//         </p>
-//         <p>For context:</p>
-//         <ul className="list-disc pl-5 space-y-2">
-//           <li>My average bill over the past [X months/years] has been approximately [Typical Amount].</li>
-//           <li>This bill is [Amount], reflecting an unjustified increase of [Percentage].</li>
-//           <li>I have made no significant changes...</li>
-//         </ul>
-//         <p>Frankly, I find this situation unacceptable...</p>
-//         <p>I request:</p>
-//         <ul className="list-disc pl-5 space-y-2">
-//           <li>A thorough investigation...</li>
-//           <li>A detailed breakdown...</li>
-//           <li>Adjustment of my bill...</li>
-//           <li>Confirmation this won’t recur...</li>
-//         </ul>
-//         <p>Please address this matter urgently...</p>
-//         <p>Sincerely,<br />[Your Name]<br />[Your Contact Info]</p>
-//       </div>
-
-//       {/* Footer Buttons */}
-//       <div className="flex justify-center gap-4 mt-6 pt-4 border-t border-gray-700">
-//         <button
-//           onClick={handleAddToDraft}
-//           className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm"
-//         >
-//           Add to My Drafts
-//           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-//           </svg>
-//         </button>
-
-//         <button
-//           onClick={handleSendViaLittleVoices}
-//           className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm"
-//         >
-//           Send via Little Voices
-//           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-//           </svg>
-//         </button>
-//       </div>
-//     </div>
-//   </div>
-// )}
-
-
-//         </div>
-
-//   <div className="mt-auto flex justify-end">
-//   <img
-//   src={Logo}
-//   alt="Little Voices"
-//   className="fixed bottom-4 right-4 w-[120px] z-40"
-// />
-//         </div>
-//       </div>
+//       )}
 //     </div>
 //   );
 // };
@@ -260,155 +333,91 @@
 
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Logo from '../assets/images/VoiceLogo.png';
 
 const ChatHistory2: React.FC = () => {
-  const [detailsVisible, setDetailsVisible] = useState(true);
-  const [showResponseOverlay, setShowResponseOverlay] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const aiResponse = location.state?.aiResponse;
+  const caseMeta = location.state?.caseMeta;
 
-  const responseHistory = [
-    {
-      type: 'first',
-      content: `Dear [Energy Company Name or Customer Service Team],
+  const [showResponseOverlay, setShowResponseOverlay] = useState(false);
+  const [approvedMessageId, setApprovedMessageId] = useState<string | null>(null);
 
-I am writing to express my extreme dissatisfaction with my recent electricity bill dated [Bill Date] for account number [Your Account Number]...
+  const handleApprove = async () => {
+    const token = localStorage.getItem('token');
+    if (!token || !aiResponse || !caseMeta) return;
 
-For context:
-• My average bill over the past [X months/years] has been approximately [Typical Amount].
-• This bill is [Amount], reflecting an unjustified increase of [Percentage].
-• I have made no significant changes...`,
-    },
-  ];
+    try {
+      // 1. Create case in DB
+      const caseRes = await fetch('http://localhost:5000/api/cases', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(caseMeta),
+      });
 
-  const toggleDetails = () => setDetailsVisible(!detailsVisible);
+      const createdCase = await caseRes.json();
 
-  const handleAddToDraft = () => {
-    const subject = encodeURIComponent('New Complaint Draft');
-    const body = encodeURIComponent(`Dear [Energy Company Representative],\n\nThank you for your prompt response...`);
-    const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?subject=${subject}&body=${body}`;
-    window.open(outlookUrl, '_blank');
+      // 2. Save AI message
+      const msgRes = await fetch('http://localhost:5000/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          caseId: createdCase._id,
+          sender: 'claude',
+          content: aiResponse,
+          type: 'ai',
+          approved: true,
+        }),
+      });
+
+      const msgData = await msgRes.json();
+      setApprovedMessageId(msgData._id || msgData.aiMessage?._id || null);
+      setShowResponseOverlay(true);
+    } catch (error) {
+      console.error('Error approving message:', error);
+    }
   };
 
   const handleSendViaLittleVoices = () => {
     navigate('/chat');
   };
 
+  if (!aiResponse || !caseMeta) {
+    return <div className="text-white p-4">No message found. Go back and generate a case.</div>;
+  }
+
   return (
     <div className="min-h-screen bg-little-voices-navy text-white flex flex-col md:flex-row">
       <Sidebar />
 
       <div className="flex-1 px-4 md:px-10 py-8 md:ml-[120px] w-full max-w-[900px]">
-        {/* Back Button */}
-        <div className="flex items-center text-blue-200 cursor-pointer mb-6">
-          <span className="mr-2">←</span>
-          <span>Previous</span>
+        <div className="text-2xl md:text-3xl font-bold mb-6">Review & Approve Response</div>
+
+        <div className="bg-white text-[#2C3A5F] p-6 rounded-[10px] h-[400px] overflow-y-auto space-y-6 text-sm whitespace-pre-line">
+          {aiResponse}
         </div>
 
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold">AGL</h1>
-          <span className="bg-[#2A2F3A] px-4 py-1 rounded-full text-sm font-medium w-fit">
-            15 / 11 / 2024
-          </span>
-        </div>
-
-        {/* Case Details Section */}
-        <div className="mb-10 border-b border-[#475371] pb-6">
-          <div className="text-lg font-semibold mb-4 flex items-center cursor-pointer" onClick={toggleDetails}>
-            <span>Case Details</span>
-            <span className="text-sm ml-2">{detailsVisible ? '▾' : '▸'}</span>
-          </div>
-
-          {detailsVisible && (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                {[
-                  ['Company Name', 'AGL'],
-                  ['Company Website', 'AGL.com.au'],
-                  ['Contact Name', 'James Andrew'],
-                  ['Email', 'support@agl.com.au'],
-                ].map(([label, value], i) => (
-                  <div key={i}>
-                    <p className="text-sm text-gray-400 mb-1">{label}</p>
-                    <p className="font-medium">{value}</p>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <p className="text-sm text-gray-400 mb-1">Issue Details / History</p>
-                <p className="text-sm">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat felis dui...
-                </p>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Response History */}
-        <div className="mb-10">
-          <h2 className="text-lg font-semibold mb-4">Response History</h2>
-
-          {responseHistory.map((response, index) => (
-            <div className="mb-6" key={index}>
-              <p className="font-semibold text-blue-200 mb-2">▾ First Response:</p>
-              <p className="text-sm leading-relaxed text-white whitespace-pre-line">
-                {response.content}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Chat History Section */}
-        <div className="mb-6">
-          <label className="block mb-2">Chat History</label>
-          <div className="bg-white text-[#2C3A5F] p-6 rounded-[10px] h-[400px] overflow-y-auto space-y-6 text-sm">
-            <div>
-              <p className="font-semibold mb-1">Desired Outcome:</p>
-              <p className="font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-            </div>
-            <div>
-              <p className="text-blue-600 font-semibold mb-1">AI Response:</p>
-              <p className="font-medium">Vivamus feugiat felis dui, id luctus quam tristique vel...</p>
-            </div>
-            <div>
-              <p className="font-semibold mb-1">Your Reply:</p>
-              <p className="font-medium">Proin feugiat lectus eu odio lacinia gravida...</p>
-            </div>
-            <div>
-              <p className="text-blue-600 font-semibold mb-1">AI Response:</p>
-              <p className="font-medium whitespace-pre-line">
-                Dear [Energy Company Name or Customer Service Team],{'\n\n'}I am writing to express...
-              </p>
-            </div>
-          </div>
-
-          {/* Approve Button */}
-          <button
-            onClick={() => setShowResponseOverlay(true)}
-            className="bg-blue-500 hover:bg-blue-600 text-white mt-4 px-4 py-2 text-sm rounded-full w-fit"
-          >
-            Approve →
-          </button>
-        </div>
-
-        {/* Fixed Logo (Responsive) */}
-        <div className="mt-12 flex justify-end">
-          <img src={Logo} alt="Little Voices" className="w-[80px] md:w-[120px] fixed bottom-4 right-4 z-40" />
-        </div>
+        <button
+          onClick={handleApprove}
+          className="bg-blue-500 hover:bg-blue-600 text-white mt-4 px-4 py-2 text-sm rounded-full w-fit"
+        >
+          Approve →
+        </button>
       </div>
 
-      {/* Overlay */}
       {showResponseOverlay && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-4">
           <div className="bg-[#2C3A5F] text-white rounded-xl w-full max-w-2xl shadow-lg max-h-[90vh] flex flex-col p-6 md:p-10 overflow-hidden">
-            {/* Back Button */}
             <div className="mb-4">
-              <button
-                onClick={() => setShowResponseOverlay(false)}
-                className="flex items-center text-white hover:text-gray-300"
-              >
+              <button onClick={() => setShowResponseOverlay(false)} className="flex items-center text-white hover:text-gray-300">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
@@ -418,37 +427,20 @@ For context:
 
             <h2 className="text-2xl md:text-4xl font-bold mb-6">Final Response</h2>
 
-            {/* Scrollable Letter */}
             <div className="overflow-y-auto pr-2 space-y-4 text-sm flex-grow">
-              <p>Dear [Energy Company Name or Customer Service Team],</p>
-              <p>I am writing to express my extreme dissatisfaction with my recent electricity bill...</p>
-              <p>For context:</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>My average bill over the past [X months/years]...</li>
-                <li>This bill is [Amount]...</li>
-                <li>No significant changes in usage...</li>
-              </ul>
-              <p>I request:</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>A thorough investigation</li>
-                <li>A detailed breakdown</li>
-                <li>Adjustment of my bill</li>
-                <li>Confirmation this won’t recur</li>
-              </ul>
-              <p>Sincerely,<br />[Your Name]<br />[Your Contact Info]</p>
+              <p className="whitespace-pre-line">{aiResponse}</p>
             </div>
 
-            {/* Footer Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6 pt-4 border-t border-gray-700">
               <button
-                onClick={handleAddToDraft}
-                className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm flex items-center gap-2"
+                onClick={() => window.open(`https://outlook.live.com/mail/0/deeplink/compose?subject=Complaint Draft&body=${encodeURIComponent(aiResponse)}`, '_blank')}
+                className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm"
               >
                 Add to My Drafts
               </button>
               <button
                 onClick={handleSendViaLittleVoices}
-                className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm flex items-center gap-2"
+                className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-full text-sm"
               >
                 Send via Little Voices
               </button>
@@ -461,3 +453,5 @@ For context:
 };
 
 export default ChatHistory2;
+
+

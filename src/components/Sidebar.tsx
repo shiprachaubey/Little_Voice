@@ -102,19 +102,19 @@ const Sidebar = () => {
           <div className="flex flex-col gap-6 items-center">
             <NavLink to="/home">
               {({ isActive }) => (
-                <HomeIcon className="w-8 h-8" fill={isActive ? '#FF0000' : '#FFFFFF'} />
+                <HomeIcon className="w-14 h-14" fill={isActive ? '#FF0000' : '#FFFFFF'} />
               )}
             </NavLink>
 
             <NavLink to="/newcase">
               {({ isActive }) => (
-                <Newcase className="w-8 h-8" fill={isActive ? '#FF0000' : '#FFFFFF'} />
+                <Newcase className="w-14 h-14" fill={isActive ? '#FF0000' : '#FFFFFF'} />
               )}
             </NavLink>
 
             <NavLink to="/support">
               {({ isActive }) => (
-                <Support className="w-8 h-8" fill={isActive ? '#FF0000' : '#FFFFFF'} />
+                <Support className="w-14 h-14" fill={isActive ? '#FF0000' : '#FFFFFF'} />
               )}
             </NavLink>
           </div>
