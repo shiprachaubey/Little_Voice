@@ -20,19 +20,43 @@ const NewCase: FC = () => {
     }
   };
 
-  const handleNext = () => {
-    const caseData = {
-      companyName,
-      companyWebsite,
-      contactName,
-      email,
-      issueDescription: issueDetails,
-      contractFile,
-    };
+const handleNext = async () => {
+  try {
+    const token = localStorage.getItem('token');
+
+    const res = await fetch('http://localhost:5000/api/case/create-cases', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        companyName,
+        companyWebsite,
+        contactName,
+        email,
+        issueDescription: issueDetails,
+        tone: '', // if needed later
+        desiredOutcome: '' // if added later
+      }),
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      console.error("API Error:", errorData);
+      alert("Failed to create case");
+      return;
+    }
+
+    const createdCase = await res.json();
+    navigate('/generate-case', { state: { caseData: createdCase } });
+  } catch (err) {
+    console.error("Case creation failed:", err);
+    alert("Something went wrong while creating the case");
+  }
+};
 
 
-navigate('/generate-case', { state: { caseData } });
-  };
 
   return (
     <div className="min-h-screen bg-little-voices-navy text-white flex flex-col md:flex-row relative">
