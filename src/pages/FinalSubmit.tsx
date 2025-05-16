@@ -137,7 +137,6 @@
 
 // export default FinalSubmit;
 
-
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
@@ -152,6 +151,7 @@ const FinalSubmit: React.FC = () => {
   const responseHistory = chatHistory.map((msg: string) => {
     if (msg.startsWith("User:")) return { type: 'user', content: msg.replace("User: ", "") };
     if (msg.startsWith("Claude:")) return { type: 'claude', content: msg.replace("Claude: ", "") };
+    if (msg.startsWith("Company:")) return { type: 'company', content: msg.replace("Company: ", "") };
     return { type: 'other', content: msg };
   });
 
@@ -219,11 +219,21 @@ const FinalSubmit: React.FC = () => {
           {responseHistory.map((response, index) => (
             <div className="mb-6" key={index}>
               <p className="font-semibold text-blue-200 mb-2">
-                ▾ {response.type === 'user' ? 'Your Reply:' : response.type === 'claude' ? "Claude's Response:" : 'Message'}
+                ▾ {response.type === 'user'
+                  ? 'Your Reply:'
+                  : response.type === 'claude'
+                  ? "Claude's Response:"
+                  : response.type === 'company'
+                  ? `${caseMeta.companyName || 'Company'}'s Response:`
+                  : 'Message'}
               </p>
               <div
                 className={`text-sm p-4 rounded-md whitespace-pre-line ${
-                  response.type === 'claude' ? 'bg-white text-black' : 'text-white'
+                  response.type === 'claude'
+                    ? 'bg-white text-black'
+                    : response.type === 'company'
+                    ? 'bg-white text-black border border-gray-300 shadow-sm'
+                    : 'text-white'
                 }`}
               >
                 {response.content}
